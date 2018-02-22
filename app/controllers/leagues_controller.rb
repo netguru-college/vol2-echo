@@ -21,7 +21,7 @@ class LeaguesController < ApplicationController
     end
 
   def edit
-
+    @league = League.find(params[:id])
   end
 
   def update

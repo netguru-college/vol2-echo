@@ -25,7 +25,12 @@ class LeaguesController < ApplicationController
   end
 
   def update
-
+    @league = League.find(params[:id])
+    if @league.update_attributes(league_params)
+      redirect_to @league
+    else
+      render 'edit'
+    end
   end
 
   def destroy

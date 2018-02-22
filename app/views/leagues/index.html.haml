@@ -5,3 +5,5 @@
     %li
       = link_to league.name, league
       (#{league.description})
+      >
+      = link_to "Edit", edit_league_path(league)

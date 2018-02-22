@@ -12,13 +12,13 @@ class LeaguesController < ApplicationController
   end
 
   def create
-      @league = League.new(league_params)
-      if @league.save
-        redirect_to leagues_path
-      else
-        render "new"
-      end
+    @league = League.new(league_params)
+    if @league.save
+      redirect_to @league
+    else
+      render "new"
     end
+  end
 
   def edit
     @league = League.find(params[:id])
@@ -34,12 +34,13 @@ class LeaguesController < ApplicationController
   end
 
   def destroy
-
+    League.find(params[:id]).destroy
+    redirect_to leagues_path
   end
 
   private
 
   def league_params
-      params.require(:league).permit(:name, :description)
-    end
+    params.require(:league).permit(:name, :description)
+  end
 end

@@ -32,6 +32,7 @@ gem "twitter-bootstrap-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise', '~> 4.2'
+gem 'rubocop', require: false
 
 group :development, :test do
   gem 'pry'

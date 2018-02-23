@@ -1,5 +1,11 @@
 %h1= @league.name
 %p= @league.description
+================
+League's members
+================
+- @league.users.each do |user|
+  %ol
+    %span= user.name
 >
 %span= link_to "Edit", edit_league_path(@league)
 >

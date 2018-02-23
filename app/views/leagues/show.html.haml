@@ -1,0 +1,6 @@
+%h1= @league.name
+%p= @league.description
+>
+%span= link_to "Edit", edit_league_path(@league)
+>
+%span= link_to "Back to leagues list", leagues_path

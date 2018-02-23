@@ -7,4 +7,16 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    #messages
+      - flash.each do |type, message|
+        %span{class: "text-#{type}"}= message
+
+    .current-user-message
+      - if current_user
+        = "You are now logged as #{current_user}."
+        = link_to "Log out", destroy_user_session_path, method: :delete
+      - else
+        %span You are not logged in.
+        = link_to "Log in", new_user_session_path
+
     = yield

@@ -9,7 +9,7 @@
   %body
     #messages
       - flash.each do |type, message|
-        %span{class: "text-#{type}"}= message
+        %div{class: "alert alert-#{type}", role: "alert"}= message
 
     .current-user-message
       - if current_user

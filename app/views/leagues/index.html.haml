@@ -1,0 +1,11 @@
+%h1 Leagues index
+= link_to "Add new league", new_league_path
+%ol
+  - @leagues.each do |league|
+    %li
+      = link_to league.name, league
+      (#{league.description})
+      >
+      = link_to "Edit", edit_league_path(league)
+      >
+      = link_to "Delete", league_path(league), method: :delete

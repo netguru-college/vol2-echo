@@ -16,7 +16,7 @@ class LeaguesController < ApplicationController
     if @league.save
       redirect_to @league
     else
-      render "new"
+      render 'new'
     end
   end
 

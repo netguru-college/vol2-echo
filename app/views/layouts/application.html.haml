@@ -26,7 +26,9 @@
 
   .current-user-message
     - if current_user
-      = "You are now logged as #{current_user}"
+      = "Logged as "
+      = link_to current_user.name, user_path(current_user)
+      %br
       = link_to "Log out", destroy_user_session_path, method: :delete
     - else
       %span You are not logged in.

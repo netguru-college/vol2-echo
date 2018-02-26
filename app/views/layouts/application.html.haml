@@ -7,7 +7,20 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    #messages
+  %nav.navbar.navbar-default{:role => "navigation"}
+    .container-fluid
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %a.navbar-brand{:href => "www.google.pl"} Rankinger
+      / Collect the nav links, forms, and other content for toggling
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li.active
+            %a{:href => "#"} Link
+          %li
+            %a{:href => "#"} Link
+
+
       - flash.each do |type, message|
         %div{class: "alert alert-#{type}", role: "alert"}= message
 

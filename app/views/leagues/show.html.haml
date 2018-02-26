@@ -10,4 +10,4 @@
   %h2 League's members
   - @league.users.each do |user|
     %ol
-      %span= user
+      %span= link_to user.name, user_path(user)

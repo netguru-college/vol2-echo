@@ -49,19 +49,32 @@ class LeaguesController < ApplicationController
 
   def join
     @league = League.find(params[:id])
-    if @league.users.include? current_user
-      flash[:danger] = "You already belong to this league."
-      redirect_to @league
+    if not_full?(@league)
+      if @league.users.include? current_user
+        flash[:danger] = "You already belong to this league."
+        redirect_to @league
+      else
+        flash[:success] = "Welcome to #{@league.name}"
+        @league.users << current_user
+        redirect_to @league
+      end
     else
-      flash[:success] = "Welcome to #{@league.name}"
-      @league.users << current_user
+      flash[:danger] = "This league is already full"
       redirect_to @league
     end
+
+
   end
 
   private
 
   def league_params
-    params.require(:league).permit(:name, :description)
+    params.require(:league).permit(:name, :description, :capacity)
   end
+
+  def not_full?(league)
+    league.users.count < league.capacity
+  end
+
+
 end

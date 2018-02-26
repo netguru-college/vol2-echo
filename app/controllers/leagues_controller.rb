@@ -56,6 +56,9 @@ class LeaguesController < ApplicationController
       else
         flash[:success] = "Welcome to #{@league.name}"
         @league.users << current_user
+        if @league.users.count == @league.capacity
+          @league.generate_matches
+        end
         redirect_to @league
       end
     else
@@ -75,6 +78,8 @@ class LeaguesController < ApplicationController
   def not_full?(league)
     league.users.count < league.capacity
   end
+
+
 
 
 end

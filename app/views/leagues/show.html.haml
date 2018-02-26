@@ -12,3 +12,11 @@
   - @league.users.each do |user|
     %ol
       %span= link_to user.name, user_path(user)
+
+.league-matches
+  %h2 League's matches
+  - @league.matches.each do |match|
+    %ol
+      %span= "#{match.player_1} vs #{match.player_2}"
+
+

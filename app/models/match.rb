@@ -5,4 +5,5 @@ class Match < ApplicationRecord
   validates_uniqueness_of :player_2, scope: %i[league_id player_1] #not tested yet
 
   scope :players, -> { includes(:player1, :player2) }
+  scope :played_by_user, -> (user){ where("player_1 = ? OR player_2 = ?", user.id, user.id ) }
 end

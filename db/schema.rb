@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180223112412) do
+ActiveRecord::Schema.define(version: 20180226090941) do
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
@@ -27,6 +26,14 @@ ActiveRecord::Schema.define(version: 20180223112412) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.integer "league_id"
+    t.integer "player_1"
+    t.integer "player_2"
+    t.integer "player1_goals"
+    t.integer "player2_goals"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -40,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180223112412) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

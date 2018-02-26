@@ -1,4 +1,5 @@
 class League < ApplicationRecord
+  belongs_to :owner, class_name: 'User'
   has_many :leagues_members
   has_many :users, through: :leagues_members
   has_many :matches

@@ -1,0 +1,4 @@
+class MianPagesControllers < ApplicationController
+
+
+end

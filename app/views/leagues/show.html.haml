@@ -11,3 +11,4 @@
   - @league.users.each do |user|
     %ol
       %span= link_to user.name, user_path(user)
+      %span= link_to "KickOut", user_kickout_path(@league.id, user.id), method: :post

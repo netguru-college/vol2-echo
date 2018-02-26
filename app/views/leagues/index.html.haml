@@ -3,9 +3,13 @@
 %ol
   - @leagues.each do |league|
     %li
-      = link_to league.name, league
-      (#{league.description})
-      >
-      = link_to "Edit", edit_league_path(league)
-      >
-      = link_to "Delete", league_path(league), method: :delete
+      - if league.owner == current_user
+        = link_to league.name, league
+        (#{league.description})
+        >
+        = link_to "Edit", edit_league_path(league)
+        >
+        = link_to "Delete", league_path(league), method: :delete
+      - else
+        = link_to league.name, league
+        (#{league.description})

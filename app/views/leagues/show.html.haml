@@ -1,6 +1,13 @@
 %h1= @league.name
 %p= @league.description
->
-%span= link_to "Edit", edit_league_path(@league)
->
-%span= link_to "Back to leagues list", leagues_path
+
+.navigation-links
+  %span= link_to "Join", join_league_path(@league), method: :post
+  %span= link_to "Edit", edit_league_path(@league)
+  %span= link_to "Back to leagues list", leagues_path
+
+.league-members
+  %h2 League's members
+  - @league.users.each do |user|
+    %ol
+      %span= user

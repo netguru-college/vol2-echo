@@ -16,6 +16,7 @@ class LeaguesController < ApplicationController
 
   def create
     @league = League.new(league_params)
+    @league.owner_id = current_user.id
     if @league.save
       flash[:success] = "League created."
       redirect_to @league

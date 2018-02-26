@@ -14,9 +14,10 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     if @league.save
-      notice[:success]
+      flash[:success] = "League created."
       redirect_to @league
     else
+      flash[:danger] = "Could not create new league."
       render 'new'
     end
   end
@@ -28,14 +29,17 @@ class LeaguesController < ApplicationController
   def update
     @league = League.find(params[:id])
     if @league.update_attributes(league_params)
+      flash[:success] = "League edited."
       redirect_to @league
     else
+      flash[:danger] = "Could not edit league."
       render 'edit'
     end
   end
 
   def destroy
     League.find(params[:id]).destroy
+    flash[:success] = "League deleted."
     redirect_to leagues_path
   end
 

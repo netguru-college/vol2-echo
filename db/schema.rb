@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226093058) do
+ActiveRecord::Schema.define(version: 20180226130716) do
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180226093058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "owner_id"
+    t.integer "capacity", default: 4, null: false
     t.index ["owner_id"], name: "index_leagues_on_owner_id"
   end
 

@@ -17,6 +17,5 @@
   %h2 League's matches
   - @league.matches.each do |match|
     %ol
-      %span= "#{match.player_1} vs #{match.player_2}"
-
-
+      %span= "#{match.player1.name} vs #{match.player2.name}"
+      %span= ""

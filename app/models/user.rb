@@ -7,5 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
    has_many :leagues_members
    has_many :leagues, through: :leagues_members
+
+   #has_many :leagues, through: :matches
+
    has_many :owned_leagues, class_name: 'League', foreign_key: 'owner_id'
+
 end

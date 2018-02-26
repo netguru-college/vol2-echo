@@ -1,4 +1,4 @@
-class MatchesGeneratorService
+class MatchesGenerator
   def initialize(league:)
     @league = league
     @users = league.users

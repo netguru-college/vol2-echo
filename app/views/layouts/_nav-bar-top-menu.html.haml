@@ -7,7 +7,7 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li= link_to "All Users", users_path
-        %li= link_to "All ligues", leagues_path
+        %li= link_to "All leagues", leagues_path
         -if user_signed_in?
           %li= link_to "My account", user_path(current_user)
         -if !user_signed_in?

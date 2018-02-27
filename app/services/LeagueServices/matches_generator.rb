@@ -1,6 +1,6 @@
 class MatchesGenerator
   attr_accessor :league, :users
-  
+
   def initialize(league:)
     @league = league
     @users = league.users
@@ -21,8 +21,8 @@ class MatchesGenerator
   def generate_matches(pairs)
     pairs.each do |pair|
       Match.create(
-        league_id: league.id, 
-        player_1: pair.first, 
+        league_id: league.id,
+        player_1: pair.first,
         player_2: pair.last
       )
     end

@@ -5,6 +5,8 @@ class MatchesController < ApplicationController
 
   def edit
     @match = Match.find(params[:id])
+    @player1 = User.find_by(id: @match.player1)
+    @player2 = User.find_by(id: @match.player2)
   end
 
   def update

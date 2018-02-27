@@ -66,7 +66,7 @@ class LeaguesController < ApplicationController
       else
         flash[:success] = "Welcome to #{@league.name}"
         @league.users << current_user
-        @league.generate_matches if @league.users.count == @league.capacity
+        LeagueServices::MatchesGenerator.new(league: @league).call if @league.users.count == @league.capacity
       end
     else
       flash[:danger] = 'This league is already full'

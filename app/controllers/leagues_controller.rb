@@ -63,17 +63,15 @@ class LeaguesController < ApplicationController
     if not_full?(@league)
       if @league.users.include? current_user
         flash[:danger] = 'You already belong to this league.'
-        redirect_to @league
       else
         flash[:success] = "Welcome to #{@league.name}"
         @league.users << current_user
         @league.generate_matches if @league.users.count == @league.capacity
-        redirect_to @league
       end
     else
       flash[:danger] = 'This league is already full'
-      redirect_to @league
     end
+    redirect_to @league
   end
 
   def kick

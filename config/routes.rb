@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :leagues
   resources :users
   resources :matches
-
+  resources :mainpages
+  
   post 'league/:id/join', to: 'leagues#join', as: 'join_league'
   post 'league/:league_id/userKickOut/:user_id', to: 'leagues#kick', as: 'user_kickout'
 

@@ -9,6 +9,7 @@ class LeaguesController < ApplicationController
 
   def show
     @league = League.find(params[:id]).decorate
+    @matches = @league.matches.decorate
   end
 
   def new

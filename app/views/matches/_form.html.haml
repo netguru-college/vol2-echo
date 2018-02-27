@@ -1,0 +1,17 @@
+- if @match.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@match.errors.count, "error")
+      prohibited this match from being saved:
+    %ul
+      - @match.errors.full_messages.each do |msg|
+        %li= msg
+
+= form_for @match do |f|
+  .f_player
+    ="#{@player1.name} goals: "
+    =f.text_field :player1_goals
+  .s_player
+    ="#{@player2.name} goals: "
+    =f.text_field :player2_goals
+  = f.submit

@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :require_permission, only: :edit
 
-  before_action :authenticate_user!, except: [:index, :show]
-
+  def require_permission
+    user = User.find_by(id: params[:id])
+    redirect_to root_path if !user.present? || current_user != user
+  end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
+    flash[:success] = 'User deleted.'
     redirect_to users_path
   end
 
@@ -24,14 +28,13 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "User edited."
+      flash[:success] = 'User edited.'
       redirect_to @user
     else
-      flash[:danger] = "Could not edit user."
+      flash[:danger] = 'Could not edit user.'
       render 'edit'
     end
   end
-
 
   private
 

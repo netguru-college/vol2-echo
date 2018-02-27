@@ -1,13 +1,15 @@
 class LeaguesController < ApplicationController
-
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :require_permission, only: %i[edit destroy]
+  before_action :require_kick_permission, only: [:kick]
 
   def index
     @leagues = League.all
   end
 
   def show
-    @league = League.find(params[:id])
+    @league = League.find(params[:id]).decorate
+    @matches = @league.matches.decorate
   end
 
   def new
@@ -18,10 +20,10 @@ class LeaguesController < ApplicationController
     @league = League.new(league_params)
     @league.owner_id = current_user.id
     if @league.save
-      flash[:success] = "League created."
+      flash[:success] = 'League created.'
       redirect_to @league
     else
-      flash[:danger] = "Could not create new league."
+      flash[:danger] = 'Could not create new league.'
       render 'new'
     end
   end
@@ -33,17 +35,17 @@ class LeaguesController < ApplicationController
   def update
     @league = League.find(params[:id])
     if @league.update_attributes(league_params)
-      flash[:success] = "League edited."
+      flash[:success] = 'League edited.'
       redirect_to @league
     else
-      flash[:danger] = "Could not edit league."
+      flash[:danger] = 'Could not edit league.'
       render 'edit'
     end
   end
 
   def destroy
     League.find(params[:id]).destroy
-    flash[:success] = "League deleted."
+    flash[:success] = 'League deleted.'
     redirect_to leagues_path
   end
 
@@ -51,22 +53,16 @@ class LeaguesController < ApplicationController
     @league = League.find(params[:id])
     if not_full?(@league)
       if @league.users.include? current_user
-        flash[:danger] = "You already belong to this league."
-        redirect_to @league
+        flash[:danger] = 'You already belong to this league.'
       else
         flash[:success] = "Welcome to #{@league.name}"
         @league.users << current_user
-        if @league.users.count == @league.capacity
-          @league.generate_matches
-        end
-        redirect_to @league
+        LeagueServices::MatchesGenerator.new(league: @league).call if @league.users.count == @league.capacity
       end
     else
-      flash[:danger] = "This league is already full"
-      redirect_to @league
+      flash[:danger] = 'This league is already full'
     end
-
-
+    redirect_to @league
   end
 
   def kick
@@ -76,7 +72,28 @@ class LeaguesController < ApplicationController
     flash[:success] = "#{@user.name} successfully deleted."
     redirect_to @league
   end
+
   private
+
+  def require_permission
+    league = League.find_by(id: params[:id])
+    return redirect_to root_path unless league.present?
+
+    if current_user == league.owner
+    elsif current_user != league.owner
+      redirect_to root_path, message: 'woo'
+    end
+  end
+
+  def require_kick_permission
+    league = League.find_by(id: params[:league_id])
+    return redirect_to root_path unless league.present?
+
+    if current_user == league.owner || current_user == User.find(params[:user_id])
+    elsif current_user != league.owner
+      redirect_to root_path, message: 'woo'
+    end
+  end
 
   def league_params
     params.require(:league).permit(:name, :description, :capacity)
@@ -85,8 +102,4 @@ class LeaguesController < ApplicationController
   def not_full?(league)
     league.users.count < league.capacity
   end
-
-
-
-
 end

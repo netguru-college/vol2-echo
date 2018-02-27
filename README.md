@@ -1,24 +1,39 @@
-# README
+[![Build Status](https://travis-ci.org/netguru-code-college/vol2-echo.svg?branch=master)](https://travis-ci.org/netguru-code-college/vol2-echo)
+# Rankinger
+placeholder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Authors:
 
-Things you may want to cover:
+* [Dominika](https://github.com/DominikaPietrzak)
+* [Bartosz](https://github.com/bartosobczynski)
+* [Ryszard](https://github.com/RGu0000)
+* [Kacper](https://github.com/lickerish)
 
-* Ruby version
+## How to start
+1. Clone:
+```bash
+$ git clone https://github.com/netguru-code-college/vol2-echo.git
+```
 
-* System dependencies
+2. Enter directory:
+```bash
+$ cd vol2-echo
+```
 
-* Configuration
+3. Instal gems:
+```bash
+$ bundle
+```
 
-* Database creation
+4. Create and seed database:
+```bash
+$ rails db:create
+$ rails db:seed
+```
 
-* Database initialization
+5. Run rails server:
+```bash
+$ rails s
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Enjoy!

@@ -8,9 +8,7 @@
       - if league.owner == current_user
         = link_to league.name, league
         (#{league.description})
-        >
         = link_to "Edit", edit_league_path(league), class: "btn btn-warning"
-        >
         = link_to "Delete", league_path(league), method: :delete, class: "btn btn-danger"
       - else
         = link_to league.name, league

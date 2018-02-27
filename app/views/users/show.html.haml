@@ -1,8 +1,10 @@
 %h1= "Leagues where #{@user.name} participate"
+%ul.list-group
 - @user.leagues.each do |league|
- %li= league.name
+ %li.list-group-item= league.name
 
 
  %h1= "Leagues owned by #{@user.name}"
+ %ul.list-group
  - @user.owned_leagues.each do |league|
-  %li= league.name
+  %li.list-group-item= league.name

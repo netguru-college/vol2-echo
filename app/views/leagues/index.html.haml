@@ -1,8 +1,8 @@
 %h1 Leagues index
 = link_to "Add new league", new_league_path
-%ol
+%ul.list-group
   - @leagues.each do |league|
-    %li
+    %li.list-group-item
       - if league.owner == current_user
         = link_to league.name, league
         (#{league.description})

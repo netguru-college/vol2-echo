@@ -1,9 +1,9 @@
 %h1 All signed up users
 = link_to "Create new user", new_user_path
 
+%ul.list-group
   - @users.each do |user|
-  %ol
-    %li
+    %li.list-group-item
       - if user == current_user
         = link_to user.email, user
         (#{user.name})

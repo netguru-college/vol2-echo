@@ -1,11 +1,17 @@
+
 %h1 Leagues index
-= link_to "Add new league", new_league_path
-%ol
+= link_to "Add new league", new_league_path, class: "btn btn-primary"
+
+%ul.list-group
   - @leagues.each do |league|
-    %li
-      = link_to league.name, league
-      (#{league.description})
-      >
-      = link_to "Edit", edit_league_path(league)
-      >
-      = link_to "Delete", league_path(league), method: :delete
+    %li.list-group-item
+      - if league.owner == current_user
+        = link_to league.name, league
+        (#{league.description})
+        >
+        = link_to "Edit", edit_league_path(league), class: "btn btn-warning"
+        >
+        = link_to "Delete", league_path(league), method: :delete, class: "btn btn-danger"
+      - else
+        = link_to league.name, league
+        (#{league.description})

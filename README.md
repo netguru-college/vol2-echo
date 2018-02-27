@@ -22,3 +22,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Coding style
+
+Coding style is strictly enforced. To check if everything is up-to-spec:
+
+### To check backend part:
+
+```bash
+bundle exec rubocop
+bundle exec rubocop -a # try to automatically fix mistakes
+```

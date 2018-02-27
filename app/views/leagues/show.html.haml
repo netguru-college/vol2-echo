@@ -1,20 +1,28 @@
-%h1= @league.name
-%p= @league.description
-%p= @league.capacity
+.page-header
+  %h1
+    =@league.name
+    %small
+      =@league.fill_status
+  %p
+    =@league.description
 
 .navigation-links
-  %span= link_to "Join", join_league_path(@league), method: :post
-  %span= link_to "Edit", edit_league_path(@league)
-  %span= link_to "Back to leagues list", leagues_path
+  %span= link_to "Join", join_league_path(@league), method: :post, class: "btn btn-success"
+  %span= link_to "Edit", edit_league_path(@league), class: "btn btn-warning"
+  %span= link_to "Back to leagues list", leagues_path, class: "btn btn-primary"
 
-.league-members
-  %h2 League's members
-  - @league.users.each do |user|
-    %ol
-      %span= link_to user.name, user_path(user)
+.league-members.panel.panel-default
+  .panel-heading
+    League's members
+  .panel-body
+    - @league.users.each do |user|
+      %ol
+        %span= link_to user.name, user_path(user)
 
-.league-matches
-  %h2 League's matches
-  - @league.matches.each do |match|
-    %ol
-      %span= "#{match.player1.name} vs #{match.player2.name}"
+.league-matches.panel.panel-default
+  .panel-heading
+    League's matches
+  .panel-body
+    - @league.matches.each do |match|
+      %ol
+        %span= "#{match.player1.name} vs #{match.player2.name}"

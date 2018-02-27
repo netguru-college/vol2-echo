@@ -17,7 +17,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @league = League.find(params[:id])
+    @league = League.find(params[:id]).decorate
   end
 
   def new

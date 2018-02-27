@@ -2,7 +2,7 @@
 %h1 Leagues index
 = link_to "Add new league", new_league_path, class: "btn btn-primary"
 
-%ul.list-group
+%ul.list-group.index-leagues
   - @leagues.each do |league|
     %li.list-group-item
       - if league.owner == current_user

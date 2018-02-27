@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  before_action :require_permission, only: :edit
+
+  def require_permission
+    user = User.find_by(id: params[:id])
+    redirect_to root_path if user.present? || current_user != user
+  end
 
   def destroy
     User.find(params[:id]).destroy

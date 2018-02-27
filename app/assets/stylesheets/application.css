@@ -29,3 +29,8 @@
    padding-top: 3px;
    padding-left: 3px;
  }
+
+ .user-navbar {
+   font-weight: bold;
+   font-size: 1.15em;
+ }

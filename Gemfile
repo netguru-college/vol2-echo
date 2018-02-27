@@ -16,7 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'twitter-bootstrap-rails'
 gem 'devise', '~> 4.2'
-ruby '2.4.1'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'

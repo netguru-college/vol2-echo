@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def require_permission
     user = User.find_by(id: params[:id])
-    redirect_to root_path if user.present? || current_user != user
+    redirect_to root_path if !user.present? || current_user != user
   end
 
   def destroy

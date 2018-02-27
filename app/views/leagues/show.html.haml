@@ -1,6 +1,6 @@
 %h1= @league.name
 %p= @league.description
-%p= @league.capacity
+%p= @league.fill_status
 
 .navigation-links
   %span= link_to "Join", join_league_path(@league), method: :post

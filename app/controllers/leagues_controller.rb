@@ -7,7 +7,6 @@ class LeaguesController < ApplicationController
     return redirect_to root_path unless league.present?
 
     if current_user == league.owner
-      redirect_to root_path, message: 'yey'
     elsif current_user != league.owner
       redirect_to root_path, message: 'woo'
     end

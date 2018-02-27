@@ -80,6 +80,7 @@ GEM
     ffi (1.9.21)
     font-awesome-sass (5.0.6.2)
       sass (>= 3.2)
+    frontend-generators (0.0.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -226,6 +227,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.2)
   font-awesome-sass (~> 5.0.6)
+  frontend-generators
   haml
   jbuilder (~> 2.5)
   jquery-rails

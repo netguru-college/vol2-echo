@@ -18,7 +18,8 @@
     - @league.users.each do |user|
       %ol
         %span= link_to user.name, user_path(user)
-        =link_to "Kick", user_kickout_path(@league.id, user.id), class: "btn btn-danger", method: :post
+        - if current_user == user
+          =link_to "Kick", user_kickout_path(@league.id, user.id), class: "btn btn-danger", method: :post
 
 .league-matches.panel.panel-default
   .panel-heading

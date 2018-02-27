@@ -18,6 +18,7 @@ gem "twitter-bootstrap-rails"
 gem 'devise', '~> 4.2'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
   gem 'pry'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'

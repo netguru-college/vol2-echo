@@ -19,3 +19,6 @@
     %ol
       %span= "#{match.player1.name} vs #{match.player2.name}"
       %span= ""
+
+      %span= link_to "KickOut", user_kickout_path(@league.id, user.id), method: :post
+

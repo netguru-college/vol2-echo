@@ -69,6 +69,13 @@ class LeaguesController < ApplicationController
 
   end
 
+  def kick
+    @league = League.find(params[:league_id])
+    @user = User.find(params[:user_id])
+    @league.users.delete(@user)
+    flash[:success] = "#{@user.name} successfully deleted."
+    redirect_to @league
+  end
   private
 
   def league_params

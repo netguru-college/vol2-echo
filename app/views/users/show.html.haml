@@ -1,2 +1,8 @@
-%h1= "#{@user.name} leagues"
-%p= @user.leagues.name
+%h1= "Leagues where #{@user.name} participate"
+- @user.leagues.each do |league|
+ %li= league.name
+
+
+ %h1= "Leagues owned by #{@user.name}"
+ - @user.owned_leagues.each do |league|
+  %li= league.name

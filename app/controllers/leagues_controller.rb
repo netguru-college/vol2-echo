@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :require_permission, only: [:edit, :destroy]
+  before_action :require_permission, only: %i[edit destroy]
   before_action :require_kick_permission, only: [:kick]
 
   def index

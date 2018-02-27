@@ -1,5 +1,6 @@
 %h1= @league.name
 %p= @league.description
+%p= @league.capacity
 
 .navigation-links
   %span= link_to "Join", join_league_path(@league), method: :post
@@ -11,4 +12,13 @@
   - @league.users.each do |user|
     %ol
       %span= link_to user.name, user_path(user)
+
+.league-matches
+  %h2 League's matches
+  - @league.matches.each do |match|
+    %ol
+      %span= "#{match.player1.name} vs #{match.player2.name}"
+      %span= ""
+
       %span= link_to "KickOut", user_kickout_path(@league.id, user.id), method: :post
+

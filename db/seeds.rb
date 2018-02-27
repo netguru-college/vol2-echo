@@ -2,22 +2,58 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
-# atch.where( "matches.player_1 = ? OR matches.player_2 = ? ", user.id, user.id)
+# Match.where( "matches.player_1 = ? OR matches.player_2 = ? ", user.id, user.id)
 # Match.where(player_1: user).or(Match.where(player_2: user))
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+names = %w[Rysiek Dominika Kacper Bartosz Zuza Ozim Robert Kanapka Obiad Amator haslo_to_111111]
+league_names = %w[Pusta_liga 1_gracz 2_graczy 3_graczy 4_graczy 5_graczy 6_graczy 7_graczy 8_graczy 9_graczy 10_graczy]
+descriptions = %w[Fajna_liga Super_liga Liga_mistrzow Ekstraklasa Poznan_Rulez
+                 Bialystok Warszawa Gdansk Krakow Katowice Liga_Amatorow]
+pass = 111111
+
+# Create Users:
+names.each{ |name| User.create(email: "#{name}@pl",
+                                      password: pass,
+                                      password_confirmation: pass,
+                                      name: name) }
+users = User.all
+
+# Create Leagues:
+11.times do |i|
+  #binding.pry
+  League.create(name: league_names[i],
+                description: descriptions[i],
+                capacity: i,
+                owner_id: i)
+end
+
+# Create LeaguesMembers and generate Matches:
+leagues=League.all
+leagues.each{ |league|
+  league.capacity.times do |j|
+    LeaguesMember.create(user_id: users[j].id, league_id: league.id)
+  end
+  #binding.pry
+  LeagueServices::MatchesGenerator.new(league: league).call
+}
+
+
+
+
+
 
 #users = User.all
 #leagues = League.all
-user =User.first
-leagues = League.create([
-                           {name: 'Warsaw league', description: 'Players from Warsaw office - join us!'},
-                           {name: 'Poznan league', description: 'Players from Poznan office - join us!'},
-                           {name: 'Poland - best 16', description: 'Best 16 from all polish offices'},
-                           {name: 'Playground', description: 'Want to test your new tactics? Do it here!'}
-                       ])
-#
+# user =User.first
+# leagues = League.create([
+#                            {name: 'Warsaw league', description: 'Players from Warsaw office - join us!', capacity:2},
+#                            {name: 'Poznan league', description: 'Players from Poznan office - join us!'},
+#                            {name: 'Poland - best 16', description: 'Best 16 from all polish offices'},
+#                            {name: 'Playground', description: 'Want to test your new tactics? Do it here!'}
+#                        ])
+
 # leagues_members = LeaguesMember.create([
 #                                     {user_id: users[0].id, league_id: leagues[0].id},
 #                                     {user_id: users[1].id, league_id: leagues[0].id},

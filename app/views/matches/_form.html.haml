@@ -9,9 +9,9 @@
 
 = form_for @match do |f|
   .f_player
-    First player score:
+    ="#{@player1.name} goals: "
     =f.text_field :player1_goals
   .s_player
-    Second player score:
+    ="#{@player2.name} goals: "
     =f.text_field :player2_goals
   = f.submit

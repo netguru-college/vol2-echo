@@ -1,2 +1,3 @@
-class MianPagesControllers < ApplicationController
-end
+class MainpagesController < ApplicationController
+  def index
+  end

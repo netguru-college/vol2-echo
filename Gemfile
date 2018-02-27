@@ -7,16 +7,16 @@ end
 
 gem 'draper'
 gem 'rails', '~> 5.1.5'
-gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem "haml"
+gem 'haml'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'devise', '~> 4.2'
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
@@ -27,7 +27,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "guard-rubocop", require: false
+  gem 'guard-rubocop', require: false
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'

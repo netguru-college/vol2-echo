@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20180226130716) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.integer "capacity", default: 4, null: false
     t.index ["owner_id"], name: "index_leagues_on_owner_id"
   end

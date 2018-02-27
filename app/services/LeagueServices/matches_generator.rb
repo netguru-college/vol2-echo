@@ -18,7 +18,7 @@ class MatchesGenerator
     player_ids.combination(2).to_a
   end
 
-  def populate_db_with_matches(pairs)
+  def generate_matches(pairs)
     pairs.each do |pair|
       Match.create(
         league_id: league.id, 

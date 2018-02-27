@@ -1,16 +1,7 @@
 class LeaguesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :require_permission, only: :edit
-
-  def require_permission
-    league = League.find_by(id: params[:id])
-    return redirect_to root_path unless league.present?
-
-    if current_user == league.owner
-    elsif current_user != league.owner
-      redirect_to root_path, message: 'woo'
-    end
-  end
+  before_action :require_permission, only: [:edit, :destroy]
+  before_action :require_kick_permission, only: [:kick]
 
   def index
     @leagues = League.all
@@ -82,6 +73,26 @@ class LeaguesController < ApplicationController
   end
 
   private
+
+  def require_permission
+    league = League.find_by(id: params[:id])
+    return redirect_to root_path unless league.present?
+
+    if current_user == league.owner
+    elsif current_user != league.owner
+      redirect_to root_path, message: 'woo'
+    end
+  end
+
+  def require_kick_permission
+    league = League.find_by(id: params[:league_id])
+    return redirect_to root_path unless league.present?
+
+    if current_user == league.owner || current_user == User.find(params[:user_id])
+    elsif current_user != league.owner
+      redirect_to root_path, message: 'woo'
+    end
+  end
 
   def league_params
     params.require(:league).permit(:name, :description, :capacity)

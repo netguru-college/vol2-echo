@@ -1,12 +1,22 @@
 %h1 Users list
-%ul.list-group
-  - @users.each do |user|
-    %li.list-group-item
-      - if user == current_user
-        = link_to user.name, user
-        (#{user.email})
-        %span= link_to "Edit", edit_user_path(user), class: "btn btn-warning"
-        = link_to "Delete", user_path(user), method: :delete, data: { confirm: "Come on Dude :( \nI have kids \nOkay, I don't have kids \nbut seriously ------------>  DO NOT PRESS OK" }, class: "btn btn-danger"
-      - else
-        = link_to user.name, user
-        (#{user.email})
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Username:
+      %th E-mail:
+      %th Edit:
+      %th Delete:
+  %tbody
+    - @users.each do |user|
+      %tr
+        -if user == current_user
+          %td= link_to user.name, user_path(user)
+          %td= user.email
+          %td= link_to "Edit", edit_user_path(user), class: "btn btn-warning"
+          %td= link_to "Delete", user_path(user), method: :delete, data: { confirm: "Come on Dude :( \nI have kids \nOkay, I don't have kids \nbut seriously ------------>  DO NOT PRESS OK" }, class: "btn btn-danger"
+        -else
+          %td= link_to user.name, user_path(user)
+          %td= user.email
+          %td= " "
+          %td= " "

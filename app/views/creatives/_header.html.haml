@@ -5,4 +5,5 @@
         %h1 Join us and winn!
         %hr/
         %p Create leagues, play games, earn points and check rankings
-        %a.btn.btn-primary.btn-xl.page-scroll{:href => "#about"} Find Out More
+        .btn.btn-default.btn-xl
+          =link_to "JOIN US!",  new_user_registration_path

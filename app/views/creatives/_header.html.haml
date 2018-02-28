@@ -2,7 +2,14 @@
   %header
     .header-content
       .header-content-inner
-        %h1 Join us and winn!
+      -if user_signed_in?
+        %h1 Ready to start?
+        %hr/
+        %p Click the button bellow
+        .btn.btn-default.btn-xl
+          =link_to "Leagues",  leagues_path
+      -else
+        %h1 Join us and win!
         %hr/
         %p Create leagues, play games, earn points and check rankings
         .btn.btn-default.btn-xl

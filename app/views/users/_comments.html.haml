@@ -1,2 +1,12 @@
 %h2 Comments
 = render 'comments/form', locals: { comment: :comment }
+
+- if @user.profile_comments.any?
+  - @user.profile_comments.each do |comment|
+    .comment
+      .page-header
+        %h2
+          = comment.title
+          %small= "Added by #{comment.author.name}"
+        Message:
+        = comment.message

@@ -39,6 +39,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise', '~> 4.2'
 gem 'pg'
 gem 'rubocop', require: false
+gem 'html2haml'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'

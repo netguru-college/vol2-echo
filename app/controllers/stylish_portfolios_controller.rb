@@ -1,5 +1,5 @@
 class StylishPortfoliosController < ApplicationController
-  layout "stylish_portfolio"
+  layout 'stylish_portfolio'
 
   def index
   end

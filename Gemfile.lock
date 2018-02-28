@@ -272,8 +272,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bullet
   bootstrap-sass (~> 3.3.7)
+  bullet
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise (~> 4.2)

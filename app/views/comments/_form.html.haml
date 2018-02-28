@@ -1,0 +1,17 @@
+- if @comment.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@league.errors.count, "error")
+      prohibited this comment from being added:
+    %ul
+      - @league.errors.full_messages.each do |msg|
+        %li= msg
+
+= form_for [@user, @comment], url: user_comments_path(@user) do |f|
+  Title:
+  = f.text_field :title
+  %br
+  Message:
+  = f.text_area :message
+  %br
+  = f.submit

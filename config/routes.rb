@@ -4,10 +4,12 @@ Rails.application.routes.draw do
       }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :leagues
-  resources :users
+  resources :users do
+    resources :comments, only: :create
+  end
   resources :matches
   resources :mainpages
-  #get 'creatives/index'
+  get 'creatives/index'
 
   post 'league/:id/join', to: 'leagues#join', as: 'join_league'
   post 'league/:league_id/userKickOut/:user_id', to: 'leagues#kick', as: 'user_kickout'

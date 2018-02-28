@@ -1,0 +1,28 @@
+%section#portfolio.portfolio
+  .container
+    .row
+      .col-lg-10.col-lg-offset-1.text-center
+        %h2 Our Work
+        %hr.small/
+        .row
+          .col-md-6
+            .portfolio-item
+              %a{:href => "#"}
+                = image_tag "stylish_portfolio/portfolio-1.jpg", class: "img-portfolio img-responsive"
+          .col-md-6
+            .portfolio-item
+              %a{:href => "#"}
+                = image_tag "stylish_portfolio/portfolio-2.jpg", class: "img-portfolio img-responsive"
+          .col-md-6
+            .portfolio-item
+              %a{:href => "#"}
+                = image_tag "stylish_portfolio/portfolio-3.jpg", class: "img-portfolio img-responsive"
+          .col-md-6
+            .portfolio-item
+              %a{:href => "#"}
+                = image_tag "stylish_portfolio/portfolio-4.jpg", class: "img-portfolio img-responsive"
+        / /.row (nested)
+        %a.btn.btn-dark{:href => "#"} View More Items
+      / /.col-lg-10
+    / /.row
+  / /.container

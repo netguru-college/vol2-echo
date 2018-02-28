@@ -4,12 +4,12 @@ class LeaguesController < ApplicationController
   before_action :require_kick_permission, only: [:kick]
 
   def index
-    @leagues = League.all
+    @leagues = League.includes(:owner)
   end
 
   def show
     @league = League.find(params[:id]).decorate
-    @matches = @league.matches.decorate
+    @matches = @league.matches.includes(:player1, :player2).decorate
   end
 
   def new

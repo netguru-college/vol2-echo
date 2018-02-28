@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]).decorate
+    @comment = @user.profile_comments.new(author_id: current_user.id)
   end
 
   def edit

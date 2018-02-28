@@ -21,3 +21,16 @@
  .index-leagues {
    margin-top: 20px;
  }
+
+ .description {
+   border-bottom: 3px solid lightgray;
+   padding-bottom: 70px;
+   border-right: 3px solid lightgray;
+   padding-top: 3px;
+   padding-left: 3px;
+ }
+
+ .user-navbar {
+   font-weight: bold;
+   font-size: 1.15em;
+ }

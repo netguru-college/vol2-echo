@@ -1,4 +1,4 @@
-class CreateTable < ActiveRecord::Migration[5.1]
+class CreateTables < ActiveRecord::Migration[5.1]
   def change
     create_table :tables do |t|
       t.integer :league

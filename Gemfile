@@ -38,14 +38,13 @@ gem 'twitter-bootstrap-rails'
 
 gem 'devise', '~> 4.2'
 gem 'pg'
-gem 'rubocop'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'pry'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-
+  gem 'rubocop'
 end
 
 group :development do

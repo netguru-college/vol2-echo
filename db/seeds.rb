@@ -39,3 +39,18 @@ league_names.each_with_index do |league_name, index|
   LeagueServices::MatchesGenerator.new(league: league).call
 
 end
+
+League.create(name: "20",
+              description: "20 users",
+              capacity: 20,
+              owner_id: 1)
+20.times do |i|
+  User.create(email: "#{i}@pl",
+              password: pass,
+              password_confirmation: pass,
+              name: i)
+
+  LeaguesMember.create(user_id: User.last.id, league_id: League.last.id)
+end
+
+  LeagueServices::MatchesGenerator.new(league: League.last).call

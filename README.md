@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/netguru-code-college/vol2-echo.svg?branch=master)](https://travis-ci.org/netguru-code-college/vol2-echo)
 ![alt tag](http://www.emoji.co.uk/files/emoji-one/activity-emoji-one/1697-trophy.png)
 # Rankinger
-Rankinger is an application that makes it easier to manage games. Create your own leagues, join other people's leagues.
-Rankingier generates matches when league is filled and takes care of summarizing those struggles.
-User is able to rate leagues. Each user has kinda guestbook in personal profile.
+Rankinger is an application that makes it easier to manage matches. Create your own leagues, join other people's leagues.
+Rankinger generates matches when league is filled and takes care of summarizing those struggles.
+User is able to rate the leagues. Each user has a guestbook in personal profile.
 Good luck and have fun!
 
 ## Authors:

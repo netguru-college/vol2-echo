@@ -9,15 +9,8 @@ class Match < ApplicationRecord
   scope :players, -> { includes(:player1, :player2) }
   scope :played_by_user, ->(user) { where('player_1 = ? OR player_2 = ?', user.id, user.id) }
   scope :played_by_user_in_league, ->(player_id, league_id) do
-    where(
-      'player_1 = ? OR player_2 = ? AND league_id = ? AND player1_goals IS NOT null AND player2_goals IS NOT null',
-      player_id, player_id, league_id
-    )
-  end
-
-  after_update :update_ranking
-
-  def update_ranking
-    RankingServices::RankingUpdater.new(match: Match.last).call
+    where('player_1 = ? OR player_2 = ?', player_id, player_id)
+      .where('league_id = ?', league_id)
+      .where('player1_goals IS NOT null AND player2_goals IS NOT null')
   end
 end

@@ -42,13 +42,12 @@ module RankingServices
       result[:won] = 1 if result[:goals_for] > result[:goals_against]
       result[:drawn] = 1 if result[:goals_for] == result[:goals_against]
       result[:lost] = 1 if result[:goals_for] < result[:goals_against]
-
       result
     end
 
     def assign_goals(player_id, match)
       return [match.player1_goals, match.player2_goals] if match.player_1 == player_id
-      [match.player2_goals, match.player1_goals]
+      return [match.player2_goals, match.player1_goals] if match.player_2 == player_id
     end
 
     def update_db(user_results)
@@ -65,9 +64,3 @@ module RankingServices
     end
   end
 end
-
-# For testing purposes:
-# ranking = Ranking.find_by(league_id: 11, user_id: 30);
-# match=Match.last; match.player1_goals=666; match.player2_goals=999; match.save;
-# ranking = Ranking.find_by(league_id: 11, user_id: 30)
-# ranking = Ranking.find_by(league_id: 11, user_id: 31)

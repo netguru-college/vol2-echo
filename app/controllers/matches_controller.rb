@@ -18,7 +18,7 @@ class MatchesController < ApplicationController
     else
       flash[:danger] = 'Could not update score.'
     end
-
+    RankingServices::RankingUpdater.new(match: @match).call
     redirect_to league_path(@match.league.id)
   end
 

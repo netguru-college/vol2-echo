@@ -10,10 +10,10 @@ class LeagueDecorator < Draper::Decorator
 
   def average_rating
     if object.ratings.empty?
-      "This league has not been rated yet."
+      'This league has not been rated yet.'
     else
-      rates = object.ratings.map { |rating| rating.rate }
-      average_rating = rates.inject{ |sum, el| sum + el }.to_f / rates.size
+      rates = object.ratings.map(&:rate)
+      average_rating = rates.inject { |sum, el| sum + el }.to_f / rates.size
       "Average rating: #{average_rating}"
     end
   end

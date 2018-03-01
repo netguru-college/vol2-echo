@@ -15,9 +15,6 @@ class RatingsController < ApplicationController
 
   def check_if_already_rated!
     league = League.find(params[:league_id])
-    unless league.ratings.where(user_id: current_user.id).empty?
-      flash[:danger] = "You already rated this league."
-      redirect_to league
-    end
+    redirect_to league unless league.ratings.where(user_id: current_user.id).empty?
   end
 end

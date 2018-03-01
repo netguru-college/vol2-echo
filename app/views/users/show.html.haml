@@ -6,16 +6,8 @@
 .profile-edit
   = link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary"
 
-- unless @user.leagues.empty?
-  %h1= "Leagues where #{@user.name.capitalize} participates"
-  %ul.list-group
-    - @user.leagues.each do |league|
-      %li.list-group-item= league.name
+= render 'participated_leagues'
 
-- unless @user.owned_leagues.empty?
-  %h1= "Leagues owned by #{@user.name}"
-  %ul.list-group
-    - @user.owned_leagues.each do |league|
-      %li.list-group-item= league.name
+= render 'owned_leagues'
 
 = render 'users/comments', locals: { comment: @comment }

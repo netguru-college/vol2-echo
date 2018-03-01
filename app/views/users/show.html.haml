@@ -3,6 +3,9 @@
     =@user.name.capitalize
     %small= @user.leagues_summarize
 
+.profile-edit
+  = link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary"
+
 - unless @user.leagues.empty?
   %h1= "Leagues where #{@user.name.capitalize} participates"
   %ul.list-group

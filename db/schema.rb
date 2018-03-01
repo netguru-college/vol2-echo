@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180301092137) do
     t.integer "goal_diff", default: 0
     t.integer "points", default: 0
   end
-  
+
   create_table "ratings", force: :cascade do |t|
     t.integer "rate"
     t.integer "league_id"

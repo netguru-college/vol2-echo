@@ -1,0 +1,5 @@
+- unless @user.owned_leagues.empty?
+  %h1= "Leagues owned by #{@user.name}"
+  %ul.list-group
+    - @user.owned_leagues.each do |league|
+      %li.list-group-item= league.name

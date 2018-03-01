@@ -1,0 +1,12 @@
+.league-matches.panel.panel-default
+  .panel-heading
+    %h4 League's matches
+  .panel-body
+    - if @league.matches.empty?
+      %span.label.label-info League has to be filled first.
+    - else
+      - @matches.each do |match|
+        %ol
+          %span= "#{match.player1.name} vs #{match.player2.name}"
+          %span.label.label-info=match.score
+          =link_to "Enter Score", edit_match_path(match), class: "btn btn-default"

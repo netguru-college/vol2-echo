@@ -1,0 +1,5 @@
+- unless @user.leagues.empty?
+  %h1= "Leagues where #{@user.name.capitalize} participates"
+  %ul.list-group
+    - @user.leagues.each do |league|
+      %li.list-group-item= league.name

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :require_permission, only: :edit
+  before_action :set_user, only: %i[edit update]
 
   def require_permission
     user = User.find_by(id: params[:id])
@@ -39,6 +40,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name)

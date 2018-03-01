@@ -11,6 +11,36 @@
   %span= link_to "Edit", edit_league_path(@league), class: "btn btn-warning"
   %span= link_to "Back to leagues list", leagues_path, class: "btn btn-primary"
 
+%table.table.table-hover
+  %thead
+    %tr
+      %th Player
+      %th P
+      %th W
+      %th D
+      %th L
+      %th F
+      %th A
+      %th GD
+      %th Pts
+  %tbody
+    - @league.users.each do |league|
+      %tr
+        %td= league.name
+
+.league-matches.panel.panel-default
+  .panel-heading
+    %h4 League's matches
+  .panel-body
+    - if @league.matches.empty?
+      %span.label.label-info League has to be filled first.
+    - else
+      - @matches.each do |match|
+        %ol
+          %span= "#{match.player1.name} vs #{match.player2.name}"
+          %span.label.label-info=match.score
+          =link_to "Enter Score", edit_match_path(match), class: "btn btn-default"
+
 .league-members.panel.panel-default
   .panel-heading
     %h4 League's members
@@ -26,16 +56,3 @@
             %span= link_to user.name, user_path(user), class: 'link-to-current_user'
           - if current_user == user
             =link_to "Kick", user_kickout_path(@league.id, user.id), class: "btn btn-danger", method: :post
-
-.league-matches.panel.panel-default
-  .panel-heading
-    %h4 League's matches
-  .panel-body
-    - if @league.matches.empty?
-      %span.label.label-info League has to be filled first.
-    - else
-      - @matches.each do |match|
-        %ol
-          %span= "#{match.player1.name} vs #{match.player2.name}"
-          %span.label.label-info=match.score
-          =link_to "Enter Score", edit_match_path(match), class: "btn btn-default"

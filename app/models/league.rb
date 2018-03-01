@@ -4,6 +4,7 @@ class League < ApplicationRecord
   has_many :users, through: :leagues_members
   has_many :matches
   has_many :rankings
+  has_many :ratings
 
   scope :matches, -> { includes(:users) }
 

@@ -2,14 +2,26 @@
 %h1 Leagues
 = link_to "Add new league", new_league_path, class: "btn btn-primary"
 
-%ul.list-group.index-leagues
-  - @leagues.each do |league|
-    %li.list-group-item
-      - if league.owner == current_user
-        = link_to league.name, league
-        (#{league.description})
-        = link_to "Edit", edit_league_path(league), class: "btn btn-warning"
-        = link_to "Delete", league_path(league), method: :delete, class: "btn btn-danger"
-      - else
-        = link_to league.name, league
-        (#{league.description})
+%table.table.table-hover
+  %thead
+    %tr
+      %th League name:
+      %th Owner:
+      %th Description:
+      %th Edit
+      %th Delete
+  %tbody
+    - @leagues.each do |league|
+      %tr
+        -if league.owner == current_user
+          %td= link_to league.name, league_path(league)
+          %td= league.owner.name
+          %td= league.description
+          %td= link_to "Edit", edit_league_path(league), class: "btn btn-warning"
+          %td= link_to "Delete", league_path(league), method: :delete, data: { confirm: "Come on Dude :( \nI have kids \nOkay, I don't have kids \nbut seriously ------------>  DO NOT PRESS OK" }, class: "btn btn-danger"
+        -else
+          %td= link_to league.name, league_path(league)
+          %td= league.owner.name
+          %td= league.description
+          %td= " "
+          %td= " "

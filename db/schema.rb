@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228120422) do
+ActiveRecord::Schema.define(version: 20180301092137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "profile_id"
+    t.integer "author_id"
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
+  end
 
   create_table "leagues", force: :cascade do |t|
     t.string "name"
@@ -51,6 +62,14 @@ ActiveRecord::Schema.define(version: 20180228120422) do
     t.integer "goals_against", default: 0
     t.integer "goal_diff", default: 0
     t.integer "points", default: 0
+  end
+  
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rate"
+    t.integer "league_id"
+    t.integer "user_id"
+    t.index ["league_id"], name: "index_ratings_on_league_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

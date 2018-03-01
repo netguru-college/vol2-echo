@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id]).decorate
+    @comments = @user.profile_comments.includes(:author)
     @comment = Comment.new
   end
 

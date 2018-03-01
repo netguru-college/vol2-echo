@@ -11,3 +11,18 @@
   color: #99B898;
   font-weight: bold;
 }
+
+
+tbody {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    text-align: center;
+    padding: 8px;
+}
+thead {
+    text-align: center;
+    padding: 8px;
+}

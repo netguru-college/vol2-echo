@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(version: 20180301092137) do
     t.integer "player2_goals"
   end
 
+  create_table "rankings", force: :cascade do |t|
+    t.integer "league_id", null: false
+    t.integer "user_id", null: false
+    t.integer "played", default: 0
+    t.integer "won", default: 0
+    t.integer "drawn", default: 0
+    t.integer "lost", default: 0
+    t.integer "goals_for", default: 0
+    t.integer "goals_against", default: 0
+    t.integer "goal_diff", default: 0
+    t.integer "points", default: 0
+  end
+  
   create_table "ratings", force: :cascade do |t|
     t.integer "rate"
     t.integer "league_id"

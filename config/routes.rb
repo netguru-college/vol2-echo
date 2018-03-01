@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :matches
-  resources :mainpages
 
   post 'league/:league_id/user/:user_id/rate/:rate', to: 'ratings#create', as: 'rate_league'
 

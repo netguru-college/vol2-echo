@@ -7,4 +7,14 @@ class LeagueDecorator < Draper::Decorator
       "League is not full yet. #{object.users.count} players out of #{object.capacity}."
     end
   end
+
+  def average_rating
+    if object.ratings.empty?
+      'This league has not been rated yet.'
+    else
+      rates = object.ratings.map(&:rate)
+      average_rating = rates.inject { |sum, el| sum + el }.to_f / rates.size
+      "Average rating: #{average_rating}"
+    end
+  end
 end

@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/netguru-code-college/vol2-echo.svg?branch=master)](https://travis-ci.org/netguru-code-college/vol2-echo)
+![alt tag](https://www.publicdomainpictures.net/pictures/60000/velka/trophy.jpg)
 # Rankinger
 placeholder
 

@@ -10,12 +10,12 @@
   %h1= "Leagues where #{@user.name.capitalize} participates"
   %ul.list-group
     - @user.leagues.each do |league|
-      %li.list-group-item= league.name
+      %li.list-group-item= link_to league.name, league_path(league)
 
 - unless @user.owned_leagues.empty?
   %h1= "Leagues owned by #{@user.name}"
   %ul.list-group
     - @user.owned_leagues.each do |league|
-      %li.list-group-item= league.name
+      %li.list-group-item= link_to league.name, league_path(league)
 
 = render 'users/comments', locals: { comment: @comment }

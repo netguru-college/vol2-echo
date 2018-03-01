@@ -1,4 +1,6 @@
 class MatchesController < ApplicationController
+before_action :set_match, only: [:edit, :update]
+
   def index
     @matches = Match.includes(:player1, :player2)
   end
@@ -11,7 +13,6 @@ class MatchesController < ApplicationController
 
   def update
     @match = Match.find(params[:id])
-    # binding.pry
     if @match.update_attributes(match_params)
       flash[:success] = 'Score updated.'
     else
@@ -23,6 +24,9 @@ class MatchesController < ApplicationController
 
   private
 
+  def set_match
+    @match = Match.find(params[:id])
+  end
   def match_params
     params.require(:match).permit(:player1_goals, :player2_goals)
   end

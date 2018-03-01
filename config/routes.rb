@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   end
   resources :matches
   resources :mainpages
-  get 'creatives/index'
 
   post 'league/:id/join', to: 'leagues#join', as: 'join_league'
   post 'league/:league_id/userKickOut/:user_id', to: 'leagues#kick', as: 'user_kickout'
 
-  root 'creatives#index'
+  root 'creative#index'
 end

@@ -1,0 +1,4 @@
+.navigation-links
+  %span= link_to "Join", join_league_path(@league), method: :post, class: "btn btn-success"
+  %span= link_to "Edit", edit_league_path(@league), class: "btn btn-warning"
+  %span= link_to "Back to leagues list", leagues_path, class: "btn btn-primary"

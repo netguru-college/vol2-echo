@@ -6,36 +6,10 @@
   .description
     =@league.description
 
-.navigation-links
-  %span= link_to "Join", join_league_path(@league), method: :post, class: "btn btn-success"
-  %span= link_to "Edit", edit_league_path(@league), class: "btn btn-warning"
-  %span= link_to "Back to leagues list", leagues_path, class: "btn btn-primary"
+= render 'leagues/navigation_links'
 
-.league-members.panel.panel-default
-  .panel-heading
-    %h4 League's members
-  .panel-body
-    - if @league.users.empty?
-      %span.label.label-default League empty
-    - else
-      - @league.users.order(:name).each do |user|
-        %ol
-          -if current_user != user
-            %span= link_to user.name, user_path(user)
-          -else
-            %span= link_to user.name, user_path(user), class: 'link-to-current_user'
-          - if current_user == user
-            =link_to "Kick", user_kickout_path(@league.id, user.id), class: "btn btn-danger", method: :post
+- if current_user
+  = render 'leagues/ratings'
 
-.league-matches.panel.panel-default
-  .panel-heading
-    %h4 League's matches
-  .panel-body
-    - if @league.matches.empty?
-      %span.label.label-info League has to be filled first.
-    - else
-      - @matches.each do |match|
-        %ol
-          %span= "#{match.player1.name} vs #{match.player2.name}"
-          %span.label.label-info=match.score
-          =link_to "Enter Score", edit_match_path(match), class: "btn btn-default"
+= render 'leagues/league_members'
+= render 'leagues/league_matches'

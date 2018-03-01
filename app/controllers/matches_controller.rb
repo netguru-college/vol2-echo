@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-before_action :set_match, only: [:edit, :update]
+  before_action :set_match, only: %i[edit update]
 
   def index
     @matches = Match.includes(:player1, :player2)
@@ -27,6 +27,7 @@ before_action :set_match, only: [:edit, :update]
   def set_match
     @match = Match.find(params[:id])
   end
+
   def match_params
     params.require(:match).permit(:player1_goals, :player2_goals)
   end

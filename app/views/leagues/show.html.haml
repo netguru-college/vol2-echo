@@ -11,7 +11,8 @@
   %span= link_to "Edit", edit_league_path(@league), class: "btn btn-warning"
   %span= link_to "Back to leagues list", leagues_path, class: "btn btn-primary"
 
-= render 'leagues/ratings'
+- if current_user
+  = render 'leagues/ratings'
 
 .league-members.panel.panel-default
   .panel-heading

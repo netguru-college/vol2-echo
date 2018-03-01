@@ -9,9 +9,10 @@
 
 = form_for [@user, @comment], url: user_comments_path(@user) do |f|
   Title:
-  = f.text_field :title
-  %br
-  Message:
-  = f.text_area :message
-  %br
-  = f.submit
+  .field.form-group
+    = f.text_field :title, class: "form-control"
+  .field.form-group
+    Message:
+    = f.text_area :message, class: "form-control"
+  .actions
+    = f.submit
